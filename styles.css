@@ -6,15 +6,8 @@
 }
 
 @font-face {
-    font-family: "Nunito Bold";
-    src: url(fonts/NunitoSans_7pt_Condensed-ExtraBold.ttf);
-    font-weight: 900;
-}
-
-@font-face {
     font-family: "Nunito";
-    src: url(fonts/NunitoSans_7pt_Condensed-Bold.ttf);
-    font-weight: 700;
+    src: url(fonts/NunitoSans_10pt-Medium.ttf);
 }
 
 main {
