@@ -15,3 +15,66 @@
     src: url(fonts/NunitoSans_7pt_Condensed-Bold.ttf);
     font-weight: 700;
 }
+
+main {
+    position: relative;
+}
+
+main::before {
+    content: "";
+    position: absolute;
+    top: 0;
+   right: 0;
+    width: 50%;
+    height: 100%;
+    background-color: #F8F8FA;
+}
+
+.container {
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+
+}
+
+.desc {
+    width: 50%;
+    padding: 194px 64px 0 64px;
+}
+
+.logo {
+    position: absolute;
+    top: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.desc__par {
+    margin: 14px 0 70px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.form__label {
+    display: flex;
+    flex-direction: column;
+}
+
+.desc__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.desc__image-cont {
+    position: relative;
+    z-index: 10;
+    margin-top: 254px;
+}
