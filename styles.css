@@ -2,6 +2,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: "Nunito", sans-serif;
 }
 
 @font-face {
@@ -24,7 +25,7 @@ main::before {
     content: "";
     position: absolute;
     top: 0;
-   right: 0;
+    right: 0;
     width: 50%;
     height: 100%;
     background-color: #F8F8FA;
@@ -49,8 +50,15 @@ main::before {
     transform: translateX(-50%);
 }
 
+.desc__form-title {
+    font-size: 36px;
+}
+
 .desc__par {
     margin: 14px 0 70px;
+    color: #636363;
+    font-size: 22px;
+    line-height: 27px;
 }
 
 .form {
@@ -63,6 +71,28 @@ main::before {
 .form__label {
     display: flex;
     flex-direction: column;
+    color: #C6C6C4;
+    font-size: 16px;
+    /*height: 60px;*/
+}
+
+.form__input {
+    color: #323232;
+    font-size: 20px;
+    border: none; /* Убираем стандартную рамку */
+    border-bottom: 1px solid #C6C6C4; /* Добавляем серую рамку снизу */
+    outline: none; /* Убираем контур фокуса */
+    height: 35px;
+}
+
+
+.form__input:focus {
+    border-bottom: 1px solid #636363; /* Увеличиваем толщину рамки при фокусе */
+}
+
+.form__input::placeholder {
+color: #323232;
+font-size: 20px;
 }
 
 .desc__container {
@@ -70,11 +100,11 @@ main::before {
     flex-direction: column;
     justify-content: space-between;
     gap: 40px;
-    margin-top: 30px;
+    margin: 30px 0 190px;
 }
 
 .desc__image-cont {
     position: relative;
     z-index: 10;
-    margin-top: 254px;
+    margin: 254px 0 0 11px;
 }
