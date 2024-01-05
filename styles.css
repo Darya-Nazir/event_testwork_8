@@ -66,21 +66,36 @@ main::before {
     flex-direction: column;
     color: #C6C6C4;
     font-size: 16px;
-    /*height: 60px;*/
 }
 
 .form__input {
     color: #323232;
     font-size: 20px;
     border: none; /* Убираем стандартную рамку */
-    border-bottom: 1px solid #C6C6C4; /* Добавляем серую рамку снизу */
     outline: none; /* Убираем контур фокуса */
     height: 35px;
 }
 
+.form__label {
+    position: relative;
+}
 
-.form__input:focus {
-    border-bottom: 1px solid #636363; /* Увеличиваем толщину рамки при фокусе */
+.form__span::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px; /* Initial height */
+    background-color: #C6C6C4;
+    transition: height 0.2s ease-in-out; /* Transition for smooth effect */
+}
+
+.form__label:focus-within .form__span::after {
+    /* Change height & bg-color on input focus */
+    height: 2px;
+    background-color: #9a9a99;
 }
 
 .form__input::placeholder {
@@ -100,4 +115,22 @@ font-size: 20px;
     position: relative;
     z-index: 10;
     margin: 254px 0 0 11px;
+}
+
+.btn {
+    width: 210px;
+    height: 70px;
+    background-color: #DD3142;
+    color: #fff;
+    font-size: 20px;
+    border: none; /* Убираем рамку */
+    border-radius: 40px;
+
+}
+
+
+.asc {
+    color: #636363;
+    font-size: 16px;
+
 }
