@@ -125,12 +125,11 @@ font-size: 20px;
     font-size: 20px;
     border: none; /* Убираем рамку */
     border-radius: 40px;
-
+    margin: 0 auto;
 }
-
 
 .asc {
     color: #636363;
     font-size: 16px;
-
+    margin: 0 auto;
 }
