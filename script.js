@@ -49,6 +49,34 @@ const invalidSymbols = [
     //     evt.target.value = evt.target.value.replace(/[.,]/g, '');
     // }
 
+    // 4. При изменении значения чекбокса выводите в консоль соответствующее сообщение: “Согласен” или “Не согласен”.
+
+    const checkbox = document.getElementById('checkbox');
+
+    checkbox.onchange = (evt) => {
+        if (checkbox.checked) {
+            console.log("Согласен");
+        } else {
+            console.log("Не согласен");
+        }
+    };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
