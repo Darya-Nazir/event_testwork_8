@@ -15,26 +15,39 @@ window.onload = function () {
 
     const username = document.getElementById('your-username');
 
-    username.onkeydown = (evt) => {
-        if (evt.key === "." || evt.key === ",") {
+    // username.onkeydown = (evt) => {
+    //     if (evt.key === "." || evt.key === ",") {
+    //         evt.preventDefault();
+    //     }
+    // }
+
+const invalidSymbols = [
+    ".",
+    ","
+]
+
+    function checkString(evt) {
+        if (invalidSymbols.includes(evt.key)) {
             evt.preventDefault();
         }
     }
 
-    // Та же самая функция, но именованная. Что лучше?
-    function handleKeyDown(evt) {
-        if (evt.key === "." || evt.key === ",") {
-            evt.preventDefault();
-        }
-    }
+    username.onkeydown = checkString;
 
-    username.onkeydown = handleKeyDown;
-
-
-    // Функция делает то же самое, что и выше. Какой вариант лучше?
-    username.oninput = (evt) => {
-        evt.target.value = evt.target.value.replace(/[.,]/g, '');
-    }
+    // // Та же самая функция, но именованная. Что лучше?
+    // function handleKeyDown(evt) {
+    //     if (evt.key === "." || evt.key === ",") {
+    //         evt.preventDefault();
+    //     }
+    // }
+    //
+    // username.onkeydown = handleKeyDown;
+    //
+    //
+    // // Функция делает то же самое, что и выше. Какой вариант лучше?
+    // username.oninput = (evt) => {
+    //     evt.target.value = evt.target.value.replace(/[.,]/g, '');
+    // }
 
 
 
