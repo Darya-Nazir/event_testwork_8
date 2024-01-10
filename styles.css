@@ -126,10 +126,70 @@ font-size: 20px;
     border: none; /* Убираем рамку */
     border-radius: 40px;
     margin: 0 auto;
+    cursor: pointer;
 }
 
 .asc {
     color: #636363;
     font-size: 16px;
     margin: 0 auto;
+}
+
+/*popup*/
+
+.main__black-back {
+    position: fixed;
+    /*position: absolute;*/
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.80);
+    top: 0;
+    left: 0;
+    z-index: 4;
+
+    /*display: none;*/
+    opacity: 0; /* Устанавливаем начальную прозрачность в 0 */
+    transition: opacity 0.3s ease, visibility 0s linear 0.3s; /* Добавляем транзишн на opacity и задаем задержку для visibility */
+    visibility: hidden;
+}
+
+.main__black-back.open {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0.1s;
+    z-index: 30;
+
+}
+
+.main__popup {
+    padding: 5px;
+    height: 500px;
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    background-color: #F8F8FA;
+    position: absolute;
+    top: 350px;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+}
+
+.popup__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-right: 30px;
+    width: 500px;
+
+
+}
+.popup__text {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 27px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
