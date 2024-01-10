@@ -39,15 +39,6 @@ window.onload = function () {
         }
     };
 
-//     5. При нажатии на кнопку “Sign Up”:
-
-// • Пароль должен содержать не менее 8 символов. Если пароль короче, то выведите сообщение об ошибке через alert.
-// • Проверьте совпадают ли пароли из двух текстовых полей. Если пароли не совпадают, выведите сообщение об ошибке, используя alert.
-// • Проверьте выбран ли чекбокс. Если чекбокс не выбран, выведите сообщение об ошибке, используя alert.
-// • Если код прошёл все проверки успешно - должен появиться попап с текстом «На вашу почту выслана ссылка, перейдите по ней,
-//         чтобы завершить регистрацию» и кнопкой «ОК». При нажатии на кнопку «ОК» окно закрывается, форма очищается
-//     и пользователя перебрасывает на страницу логина (см. п.6). Модального окна в макете нет, его нужно создать самостоятельно,
-//         соблюдая общую стилистику макета.
 
     function checkFields() {
         let form = document.getElementsByClassName('form');
@@ -60,9 +51,16 @@ window.onload = function () {
                 return;
             }
         }
-        console.log('Form submitted successfully');
+
+        console.log('Все поля заполнены');
     }
 
+    function isSelectCheckbox() {
+        if (!checkbox.checked) {
+            console.log('Подтвердите свое согласие');
+            // return;
+        }
+    }
 
     const passwordInput = document.querySelector('[data-label="Password"]');
 
@@ -76,26 +74,42 @@ window.onload = function () {
 
     passwordInput.onblur = checkPasswordLength;
 
-    document.querySelector('.btn').onclick = checkFields;
+
+    const theSamePasswordInput = document.querySelector('[data-label="Repeat Password"]');
+
+    function checkPasswordsSame() {
+        if (passwordInput.value !== theSamePasswordInput.value) {
+            console.log('Пароли не совпадают!')
+        } else {
+            console.log('Пароли совпадают')
+        }
+    }
+
+    theSamePasswordInput.onblur = checkPasswordsSame;
 
 
-    //
-    // function checkFields() {
-    //     let form = document.getElementsByClassName('form');
-    //     let inputs = document.getElementsByClassName('form__input');
-    //
-    //     for (let i = 0; i < inputs.length; i++) {
-    //         if (inputs[i].value.trim() === '') {
-    //             let label = inputs[i].getAttribute('data-label');
-    //             console.log(`Заполните поле ${label}`);
-    //             return;
-    //         }
-    //     }
-    //     console.log('Form submitted successfully');
-    // }
-    //
-    // document.querySelector('.btn').onclick = checkFields;
-    // // document.getElementsByClassName('btn')[0].onclick = checkForm;
+    function handler() {
+        checkFields();
+        isSelectCheckbox();
+    }
+
+    document.querySelector('.btn').onclick = handler;
+
+//     5. При нажатии на кнопку “Sign Up”:
+
+// • Проверьте выбран ли чекбокс. Если чекбокс не выбран, выведите сообщение об ошибке, используя alert.
+// • Если код прошёл все проверки успешно - должен появиться попап с текстом «На вашу почту выслана ссылка, перейдите по ней,
+//         чтобы завершить регистрацию» и кнопкой «ОК». При нажатии на кнопку «ОК» окно закрывается, форма очищается
+//     и пользователя перебрасывает на страницу логина (см. п.6). Модального окна в макете нет, его нужно создать самостоятельно,
+//         соблюдая общую стилистику макета.
+
+
+
+
+
+
+
+
 
 
 };
