@@ -5,13 +5,32 @@ window.onload = function () {
 
     const fullName = document.getElementById('full-name');
 
-    fullName.onkeydown = (evt) => {
-        const name = !parseInt(evt.key);
-        if (name === false) {
+    function checkForDigits () {
+        const name = fullName.value;
+        const hasDigits = /\d/.test(name);
+
+        if (hasDigits) {
+            console.log('Ввод цифр запрещен');
             return false;
+        } else {
+            console.log(name);
+            return true;
         }
-        console.log(name);
     }
+
+    fullName.onblur = checkForDigits;
+
+// Первоначальный вариант функции, проверяющей наличие цифр в имени
+
+    // fullName.onkeydown = (evt) => {
+    //     const name = !parseInt(evt.key);
+    //     if (name === false) {
+    //         console.log('Ввод цифр запрещен');
+    //         return false;
+    //     }
+    //     console.log(name);
+    // }
+
 
     const username = document.getElementById('your-username');
 
@@ -102,6 +121,7 @@ window.onload = function () {
 //     и пользователя перебрасывает на страницу логина (см. п.6). Модального окна в макете нет, его нужно создать самостоятельно,
 //         соблюдая общую стилистику макета.
 
+const popupButton = document.getElementsByClassName('popup__btn');
 
 function showPopup () {
 
