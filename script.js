@@ -15,12 +15,6 @@ window.onload = function () {
 
     const username = document.getElementById('your-username');
 
-    // username.onkeydown = (evt) => {
-    //     if (evt.key === "." || evt.key === ",") {
-    //         evt.preventDefault();
-    //     }
-    // }
-
     const invalidSymbols = [
         ".",
         ","
@@ -34,24 +28,10 @@ window.onload = function () {
 
     username.onkeydown = checkString;
 
-    // // Та же самая функция, но именованная. Что лучше?
-    // function handleKeyDown(evt) {
-    //     if (evt.key === "." || evt.key === ",") {
-    //         evt.preventDefault();
-    //     }
-    // }
-    //
-    // username.onkeydown = handleKeyDown;
-    //
-    //
-    // // Функция делает то же самое, что и выше. Какой вариант лучше?
-    // username.oninput = (evt) => {
-    //     evt.target.value = evt.target.value.replace(/[.,]/g, '');
-    // }
 
+    const checkbox = document.getElementById('checkbox');
 
     checkbox.onchange = (evt) => {
-        const checkbox = document.getElementById('checkbox');
         if (checkbox.checked) {
             console.log("Согласен");
         } else {
@@ -60,8 +40,7 @@ window.onload = function () {
     };
 
 //     5. При нажатии на кнопку “Sign Up”:
-// • Проверьте на существование значения в каждом текстовом поле. Если какое-то поле не заполнено, выведите сообщение об ошибке,
-//         используя alert. Сообщение должно быть следующего вида: "Заполните поле E-mail".
+
 // • Пароль должен содержать не менее 8 символов. Если пароль короче, то выведите сообщение об ошибке через alert.
 // • Проверьте совпадают ли пароли из двух текстовых полей. Если пароли не совпадают, выведите сообщение об ошибке, используя alert.
 // • Проверьте выбран ли чекбокс. Если чекбокс не выбран, выведите сообщение об ошибке, используя alert.
@@ -84,11 +63,39 @@ window.onload = function () {
         console.log('Form submitted successfully');
     }
 
+
+    const passwordInput = document.querySelector('[data-label="Password"]');
+
+    function checkPasswordLength() {
+        let passwordValue = passwordInput.value.trim();
+
+        if (passwordValue.length < 8) {
+            console.log('Пароль должен содержать не менее 8 символов');
+        }
+    }
+
+    passwordInput.onblur = checkPasswordLength;
+
     document.querySelector('.btn').onclick = checkFields;
-    // document.getElementsByClassName('btn')[0].onclick = checkForm;
 
 
-
+    //
+    // function checkFields() {
+    //     let form = document.getElementsByClassName('form');
+    //     let inputs = document.getElementsByClassName('form__input');
+    //
+    //     for (let i = 0; i < inputs.length; i++) {
+    //         if (inputs[i].value.trim() === '') {
+    //             let label = inputs[i].getAttribute('data-label');
+    //             console.log(`Заполните поле ${label}`);
+    //             return;
+    //         }
+    //     }
+    //     console.log('Form submitted successfully');
+    // }
+    //
+    // document.querySelector('.btn').onclick = checkFields;
+    // // document.getElementsByClassName('btn')[0].onclick = checkForm;
 
 
 };
