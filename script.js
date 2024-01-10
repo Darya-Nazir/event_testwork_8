@@ -32,6 +32,8 @@ window.onload = function () {
         ","
     ]
 
+    // Эта функция не имеет булева значения, которое попадает в массив,
+    // потому что она просто не дает возможности ввести не тот символ.
     function checkString(evt) {
         if (invalidSymbols.includes(evt.key)) {
             evt.preventDefault();
@@ -66,6 +68,9 @@ window.onload = function () {
 
         console.log('Все поля заполнены');
     }
+
+    // Для использования метода forEach вместо цикла for, вам нужно преобразовать коллекцию inputs в массив.
+    //     Вы можете использовать метод Array.from. Еще надо в одном сообщении указывать все незаполненные поля.
 
     function isSelectCheckbox() {
         if (!checkbox.checked) {
@@ -121,6 +126,12 @@ window.onload = function () {
 
     }
 
-
+// Логика:
+//     Собираем результаты в массив. Делаем функцию с проверкой с помощью циклов. Если хоть одно значение ложное -
+//     запрещаем отправлять
+//     форму на сервер. Для этого есть специальные методы.
+//     Logic:
+//         Collect the results in an array. Create a function with checks using loops. If at least one value is false -
+//     prohibit submitting the form to the server. There are special methods for this.
 };
 
