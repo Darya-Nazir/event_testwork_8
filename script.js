@@ -105,22 +105,6 @@ window.onload = function () {
         return isChecked;
     }
 
-    // function isSelectCheckbox() {
-    //     // checkbox.checked = true;
-    //     if (!checkbox.checked) {
-    //         console.log('Подтвердите свое согласие');
-    //         booleanArray.push(false);
-    //     } else {
-    //         booleanArray.push(true);
-    //     }
-    // }
-
-    // function isSelectCheckbox() {
-    //     if (!checkbox.checked) {
-    //         console.log('Подтвердите свое согласие');
-    //         // return;
-    //     }
-    // }
 
     const passwordInput = document.querySelector('[data-label="Password"]');
 
@@ -151,24 +135,19 @@ window.onload = function () {
         console.log(booleanArray);
     }
 
-    function handler() {
-        // Если массив уже был заполнен, очищаем его
+    function clearArray() {
         if (booleanArray.length > 0) {
             booleanArray = [];
         }
+    }
 
-        // Вызываем ваши функции
+    function handler() {
+        clearArray();
         isValidFields();
         isValidCheckbox();
         showBooleanArray();
 
     }
-
-    // function handler() {
-    //     isValidFields();
-    //     isSelectCheckbox();
-    //     showBooleanArray();
-    // }
 
     document.querySelector('.btn').onclick = handler;
 
