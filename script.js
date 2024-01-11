@@ -107,15 +107,18 @@ window.onload = function () {
     }
 
 
-    function checkPasswordLength() {
+    function isValidPasswordLength() {
         let passwordValue = passwordInput.value.trim();
 
         if (passwordValue.length < 8) {
             console.log('Пароль должен содержать не менее 8 символов');
+            booleanArray.push(false);
+        } else {
+            booleanArray.push(true);
         }
     }
 
-    passwordInput.onblur = checkPasswordLength;
+    passwordInput.onblur = isValidPasswordLength;
 
 
     function checkPasswordsSame() {
@@ -142,6 +145,7 @@ window.onload = function () {
         clearArray();
         isValidFields();
         isValidCheckbox();
+        isValidPasswordLength();
         showBooleanArray();
 
     }
