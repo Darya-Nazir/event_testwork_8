@@ -121,15 +121,17 @@ window.onload = function () {
     passwordInput.onblur = isValidPasswordLength;
 
 
-    function checkPasswordsSame() {
+    function isPasswordsTheSame() {
         if (passwordInput.value !== theSamePasswordInput.value) {
             console.log('Пароли не совпадают!')
+            booleanArray.push(false);
         } else {
             console.log('Пароли совпадают')
+            booleanArray.push(true);
         }
     }
 
-    theSamePasswordInput.onblur = checkPasswordsSame;
+    theSamePasswordInput.onblur = isPasswordsTheSame;
 
     function showBooleanArray() {
         console.log(booleanArray);
@@ -143,11 +145,13 @@ window.onload = function () {
 
     function handler() {
         clearArray();
+
         isValidFields();
         isValidCheckbox();
         isValidPasswordLength();
-        showBooleanArray();
+        isPasswordsTheSame();
 
+        showBooleanArray();
     }
 
     document.querySelector('.btn').onclick = handler;
