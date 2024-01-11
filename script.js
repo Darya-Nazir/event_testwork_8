@@ -19,10 +19,13 @@ window.onload = function () {
         booleanArray.push(isValid);
     }
 
-    fullName.onblur = function () {
-        isNameValid();
-        console.log('booleanArray:', booleanArray);
-    }
+    fullName.onblur = isNameValid;
+
+
+    // fullName.onblur = function () {
+    //     isNameValid();
+    //     console.log('booleanArray:', booleanArray);
+    // }
 
 
     const username = document.getElementById('your-username');
@@ -54,30 +57,59 @@ window.onload = function () {
     };
 
 
-    function checkFields() {
-        let form = document.getElementsByClassName('form');
+    // function checkFields() {
+    //     let form = document.getElementsByClassName('form');
+    //     let inputs = document.getElementsByClassName('form__input');
+    //
+    //     for (let i = 0; i < inputs.length; i++) {
+    //         if (inputs[i].value.trim() === '') {
+    //             let label = inputs[i].getAttribute('data-label');
+    //             console.log(`Заполните поле ${label}`);
+    //             // return;
+    //         }
+    //         console.log('Все поля заполнены');
+    //     }
+    //
+    // }
+
+
+    function isValidFields() {
         let inputs = document.getElementsByClassName('form__input');
+        let inputsArray = Array.from(inputs);
+        let emptyFields = [];
 
-        for (let i = 0; i < inputs.length; i++) {
-            if (inputs[i].value.trim() === '') {
-                let label = inputs[i].getAttribute('data-label');
-                console.log(`Заполните поле ${label}`);
-                return;
+        inputsArray.forEach((input) => {
+            if (input.value.trim() === '') {
+                let label = input.getAttribute('data-label');
+                emptyFields.push(label);
             }
-        }
+        });
 
-        console.log('Все поля заполнены');
+        if (emptyFields.length > 0) {
+            console.log(`Необходимо заполнить ${emptyFields.join(', ')}`);
+            booleanArray.push(false);
+        } else {
+            console.log('Все поля заполнены');
+            booleanArray.push(true);
+        }
     }
 
-    // Для использования метода forEach вместо цикла for, вам нужно преобразовать коллекцию inputs в массив.
-    //     Вы можете использовать метод Array.from. Еще надо в одном сообщении указывать все незаполненные поля.
 
     function isSelectCheckbox() {
+        checkbox.checked = true;
+
         if (!checkbox.checked) {
             console.log('Подтвердите свое согласие');
             // return;
         }
     }
+
+    // function isSelectCheckbox() {
+    //     if (!checkbox.checked) {
+    //         console.log('Подтвердите свое согласие');
+    //         // return;
+    //     }
+    // }
 
     const passwordInput = document.querySelector('[data-label="Password"]');
 
@@ -104,20 +136,17 @@ window.onload = function () {
 
     theSamePasswordInput.onblur = checkPasswordsSame;
 
+function showBooleanArray() {
+    console.log(booleanArray);
+}
 
     function handler() {
-        checkFields();
+        isValidFields();
         isSelectCheckbox();
+        showBooleanArray();
     }
 
     document.querySelector('.btn').onclick = handler;
-
-//     5. При нажатии на кнопку “Sign Up”:
-
-// • Если код прошёл все проверки успешно - должен появиться попап с текстом «На вашу почту выслана ссылка, перейдите по ней,
-//         чтобы завершить регистрацию» и кнопкой «ОК». При нажатии на кнопку «ОК» окно закрывается, форма очищается
-//     и пользователя перебрасывает на страницу логина (см. п.6). Модального окна в макете нет, его нужно создать самостоятельно,
-//         соблюдая общую стилистику макета.
 
     const popupButton = document.getElementsByClassName('popup__btn');
 
