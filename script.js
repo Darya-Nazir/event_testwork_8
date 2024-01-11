@@ -5,15 +5,15 @@ window.onload = function () {
 
 
     let booleanArray = [];
-
-    const fullName = document.getElementById('full-name');
-    const username = document.getElementById('your-username');
+    let emptyFields = [];
 
     const invalidSymbols = [
         ".",
         ","
     ]
 
+    const fullName = document.getElementById('full-name');
+    const username = document.getElementById('your-username');
     const checkbox = document.getElementById('checkbox');
     const passwordInput = document.querySelector('[data-label="Password"]');
     const theSamePasswordInput = document.querySelector('[data-label="Repeat Password"]');
@@ -30,12 +30,6 @@ window.onload = function () {
     }
 
     fullName.onblur = isNameValid;
-
-
-    // fullName.onblur = function () {
-    //     isNameValid();
-    //     console.log('booleanArray:', booleanArray);
-    // }
 
 
     // Эта функция не имеет булева значения, которое попадает в массив,
@@ -74,10 +68,9 @@ window.onload = function () {
     // }
 
 
-    function isValidFields() {
+    function checkFields() {
         let inputs = document.getElementsByClassName('form__input');
         let inputsArray = Array.from(inputs);
-        let emptyFields = [];
 
         inputsArray.forEach((input) => {
             if (input.value.trim() === '') {
@@ -85,7 +78,9 @@ window.onload = function () {
                 emptyFields.push(label);
             }
         });
+    }
 
+    function isValidFields() {
         if (emptyFields.length > 0) {
             console.log(`Необходимо заполнить ${emptyFields.join(', ')}`);
             booleanArray.push(false);
@@ -145,6 +140,7 @@ window.onload = function () {
 
     function handler() {
         clearArray();
+        checkFields();
 
         isValidFields();
         isValidCheckbox();
@@ -155,7 +151,6 @@ window.onload = function () {
     }
 
     document.querySelector('.btn').onclick = handler;
-
 
 
     const popupButton = document.getElementsByClassName('popup__btn');
