@@ -7,6 +7,16 @@ window.onload = function () {
     let booleanArray = [];
 
     const fullName = document.getElementById('full-name');
+    const username = document.getElementById('your-username');
+
+    const invalidSymbols = [
+        ".",
+        ","
+    ]
+
+    const checkbox = document.getElementById('checkbox');
+    const passwordInput = document.querySelector('[data-label="Password"]');
+    const theSamePasswordInput = document.querySelector('[data-label="Repeat Password"]');
 
 
     function isNameValid() {
@@ -28,13 +38,6 @@ window.onload = function () {
     // }
 
 
-    const username = document.getElementById('your-username');
-
-    const invalidSymbols = [
-        ".",
-        ","
-    ]
-
     // Эта функция не имеет булева значения, которое попадает в массив,
     // потому что она просто не дает возможности ввести не тот символ.
     function checkString(evt) {
@@ -45,8 +48,6 @@ window.onload = function () {
 
     username.onkeydown = checkString;
 
-
-    const checkbox = document.getElementById('checkbox');
 
     checkbox.onchange = (evt) => {
         if (checkbox.checked) {
@@ -106,8 +107,6 @@ window.onload = function () {
     }
 
 
-    const passwordInput = document.querySelector('[data-label="Password"]');
-
     function checkPasswordLength() {
         let passwordValue = passwordInput.value.trim();
 
@@ -118,8 +117,6 @@ window.onload = function () {
 
     passwordInput.onblur = checkPasswordLength;
 
-
-    const theSamePasswordInput = document.querySelector('[data-label="Repeat Password"]');
 
     function checkPasswordsSame() {
         if (passwordInput.value !== theSamePasswordInput.value) {
@@ -150,6 +147,8 @@ window.onload = function () {
     }
 
     document.querySelector('.btn').onclick = handler;
+
+
 
     const popupButton = document.getElementsByClassName('popup__btn');
 
