@@ -94,15 +94,26 @@ window.onload = function () {
         }
     }
 
+    function isValidCheckbox() {
+        const isChecked = checkbox.checked;
+        booleanArray.push(isChecked);
 
-    function isSelectCheckbox() {
-        checkbox.checked = true;
-
-        if (!checkbox.checked) {
+        if (!isChecked) {
             console.log('Подтвердите свое согласие');
-            // return;
         }
+
+        return isChecked;
     }
+
+    // function isSelectCheckbox() {
+    //     // checkbox.checked = true;
+    //     if (!checkbox.checked) {
+    //         console.log('Подтвердите свое согласие');
+    //         booleanArray.push(false);
+    //     } else {
+    //         booleanArray.push(true);
+    //     }
+    // }
 
     // function isSelectCheckbox() {
     //     if (!checkbox.checked) {
@@ -136,15 +147,28 @@ window.onload = function () {
 
     theSamePasswordInput.onblur = checkPasswordsSame;
 
-function showBooleanArray() {
-    console.log(booleanArray);
-}
+    function showBooleanArray() {
+        console.log(booleanArray);
+    }
 
     function handler() {
+        // Если массив уже был заполнен, очищаем его
+        if (booleanArray.length > 0) {
+            booleanArray = [];
+        }
+
+        // Вызываем ваши функции
         isValidFields();
-        isSelectCheckbox();
+        isValidCheckbox();
         showBooleanArray();
+
     }
+
+    // function handler() {
+    //     isValidFields();
+    //     isSelectCheckbox();
+    //     showBooleanArray();
+    // }
 
     document.querySelector('.btn').onclick = handler;
 
@@ -162,5 +186,5 @@ function showBooleanArray() {
 //     Logic:
 //         Collect the results in an array. Create a function with checks using loops. If at least one value is false -
 //     prohibit submitting the form to the server. There are special methods for this.
-};
+}
 
