@@ -52,22 +52,6 @@ window.onload = function () {
     };
 
 
-    // function checkFields() {
-    //     let form = document.getElementsByClassName('form');
-    //     let inputs = document.getElementsByClassName('form__input');
-    //
-    //     for (let i = 0; i < inputs.length; i++) {
-    //         if (inputs[i].value.trim() === '') {
-    //             let label = inputs[i].getAttribute('data-label');
-    //             console.log(`Заполните поле ${label}`);
-    //             // return;
-    //         }
-    //         console.log('Все поля заполнены');
-    //     }
-    //
-    // }
-
-
     function checkFields() {
         let inputs = document.getElementsByClassName('form__input');
         let inputsArray = Array.from(inputs);
@@ -138,6 +122,16 @@ window.onload = function () {
         }
     }
 
+
+    function showPopup() {
+        if (booleanArray.includes(false)) {
+            console.log('Неправильно заполнена форма');
+            return false;
+        }
+        document.getElementById('main__black-back').classList.add('open');
+    }
+
+
     function handler() {
         clearArray();
         checkFields();
@@ -145,9 +139,9 @@ window.onload = function () {
         isValidFields();
         isValidCheckbox();
         isValidPasswordLength();
-        isPasswordsTheSame();
 
         showBooleanArray();
+        showPopup();
     }
 
     document.querySelector('.btn').onclick = handler;
@@ -156,16 +150,9 @@ window.onload = function () {
     const popupButton = document.getElementsByClassName('popup__btn');
 
 
-    function showPopup() {
 
-    }
 
-// Логика:
-//     Собираем результаты в массив. Делаем функцию с проверкой с помощью циклов. Если хоть одно значение ложное -
-//     запрещаем отправлять
-//     форму на сервер. Для этого есть специальные методы.
-//     Logic:
-//         Collect the results in an array. Create a function with checks using loops. If at least one value is false -
-//     prohibit submitting the form to the server. There are special methods for this.
+
+
 }
 
