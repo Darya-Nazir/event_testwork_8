@@ -17,6 +17,10 @@ window.onload = function () {
     const checkbox = document.getElementById('checkbox');
     const passwordInput = document.querySelector('[data-label="Password"]');
     const theSamePasswordInput = document.querySelector('[data-label="Repeat Password"]');
+    const blackBack = document.getElementById('main__black-back');
+    const popupButton = document.getElementsByClassName('popup__btn')[0];
+
+
 
 
     function isNameValid() {
@@ -128,8 +132,9 @@ window.onload = function () {
             console.log('Неправильно заполнена форма');
             return false;
         }
-        document.getElementById('main__black-back').classList.add('open');
+        blackBack.classList.add('open');
     }
+
 
 
     function handler() {
@@ -146,13 +151,16 @@ window.onload = function () {
 
     document.querySelector('.btn').onclick = handler;
 
+const link = document.getElementById('link');
+function closePopup () {
+    blackBack.classList.remove('open');
+    location.reload();
+    link.click();
+}
 
-    const popupButton = document.getElementsByClassName('popup__btn');
+popupButton.onclick = closePopup;
 
-
-
-
-
+// стили для скрола и появления ховера на ссылке
 
 }
 

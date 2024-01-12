@@ -135,6 +135,15 @@ font-size: 20px;
     margin: 0 auto;
 }
 
+#link {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+#link:hover {
+    text-decoration: underline;
+}
+
 /*popup*/
 
 .main__black-back {
