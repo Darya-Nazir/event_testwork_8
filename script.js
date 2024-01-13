@@ -135,19 +135,6 @@ window.onload = function () {
     }
 
 
-    function handler() {
-        clearArray();
-        checkFields();
-
-        isValidFields();
-        isValidCheckbox();
-        isValidPasswordLength();
-
-        showBooleanArray();
-        showPopup();
-    }
-
-
     function closePopup() {
         blackBack.classList.remove('open');
 
@@ -165,6 +152,11 @@ window.onload = function () {
         unneededElements.forEach(function (element) {
             element.remove();
         });
+
+        // descButton.addEventListener('click', areInputsFill);
+        descButton.onclick = areInputsFill;
+        passwordInput.onblur = null;
+
     }
 
 
@@ -180,6 +172,19 @@ window.onload = function () {
     }
 
 
+    function handler() {
+        clearArray();
+        checkFields();
+
+        isValidFields();
+        isValidCheckbox();
+        isValidPasswordLength();
+
+        showBooleanArray();
+        showPopup();
+    }
+
+
     fullName.onblur = isNameValid;
 
     username.onkeydown = checkString;
@@ -190,21 +195,23 @@ window.onload = function () {
 
     descButton.onclick = handler;
 
+    // descButton.addEventListener('click', handler);
+
     popupButton.onclick = closePopup;
 
     link.onclick = goToLoginView;
 
-    descButton.onclick = areInputsFill;
 
 
 
 
-    // inputsArray.forEach((input) => {
-    //     if (input.value.trim() === '') {
-    //         let label = input.getAttribute('data-label');
-    //         emptyFields.push(label);
-    //     }
-    // });
+// Разобраться с самым концом:
+
+// Точно ли можно без addEventListener
+// Почему не отражается имя в приветствии, и как выводить в консоль единожды.
+// Например, одна функция проходится по полям, а другая потом выводит итоговое сообщение.
+
+
 
 }
 
