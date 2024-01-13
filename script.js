@@ -160,7 +160,6 @@ function closePopup () {
 
 popupButton.onclick = closePopup;
 
-// стили для скрола и появления ховера на ссылке
 
 }
 
