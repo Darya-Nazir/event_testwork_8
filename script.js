@@ -21,6 +21,8 @@ window.onload = function () {
     const popupButton = document.getElementsByClassName('popup__btn')[0];
     const link = document.getElementById('link');
     const mainTitle = document.getElementsByClassName('desc__form-title')[0];
+    const unneededElements = document.querySelectorAll('.unneeded-to-login');
+    const descButton = document.getElementById('desc__btn');
 
 
     function isNameValid() {
@@ -33,8 +35,6 @@ window.onload = function () {
         booleanArray.push(isValid);
     }
 
-    fullName.onblur = isNameValid;
-
 
     // Эта функция не имеет булева значения, которое попадает в массив,
     // потому что она просто не дает возможности ввести не тот символ.
@@ -43,8 +43,6 @@ window.onload = function () {
             evt.preventDefault();
         }
     }
-
-    username.onkeydown = checkString;
 
 
     checkbox.onchange = (evt) => {
@@ -68,6 +66,7 @@ window.onload = function () {
         });
     }
 
+
     function isValidFields() {
         if (emptyFields.length > 0) {
             console.log(`Необходимо заполнить ${emptyFields.join(', ')}`);
@@ -77,6 +76,7 @@ window.onload = function () {
             booleanArray.push(true);
         }
     }
+
 
     function isValidCheckbox() {
         const isChecked = checkbox.checked;
@@ -101,8 +101,6 @@ window.onload = function () {
         }
     }
 
-    passwordInput.onblur = isValidPasswordLength;
-
 
     function isPasswordsTheSame() {
         if (passwordInput.value !== theSamePasswordInput.value) {
@@ -114,11 +112,11 @@ window.onload = function () {
         }
     }
 
-    theSamePasswordInput.onblur = isPasswordsTheSame;
 
     function showBooleanArray() {
         console.log(booleanArray);
     }
+
 
     function clearArray() {
         if (booleanArray.length > 0) {
@@ -148,26 +146,17 @@ window.onload = function () {
         showPopup();
     }
 
-    document.querySelector('.btn').onclick = handler;
 
     function closePopup() {
         blackBack.classList.remove('open');
-        location.reload();
-        link.click();
+
+        username.value = '';
+        passwordInput.value = '';
+
+        goToLoginView();
     }
 
-    popupButton.onclick = closePopup;
 
-
-
-// • Заменить слушатель события для кнопки «Sign In»:
-// нужно проверить только то, что оба поля (Username и Password) заполнены.
-// Если какое-то из полей не заполнено - вывести ошибку.
-// Если оба заполнены - вывести через alert сообщение
-// "Добро пожаловать, username!", где username - значение из соответствующего поля.
-
-    const unneededElements = document.querySelectorAll('.unneeded-to-login');
-    const descButton = document.getElementById('desc__btn');
 
     function goToLoginView() {
         mainTitle.innerText = 'Log in to the system';
@@ -178,8 +167,41 @@ window.onload = function () {
         });
     }
 
+
+
+    fullName.onblur = isNameValid;
+
+    username.onkeydown = checkString;
+
+    passwordInput.onblur = isValidPasswordLength;
+
+    theSamePasswordInput.onblur = isPasswordsTheSame;
+
+    descButton.onclick = handler;
+
+    popupButton.onclick = closePopup;
+
     link.onclick = goToLoginView;
 
+
+
+// • Заменить слушатель события для кнопки «Sign In»:
+// нужно проверить только то, что оба поля (Username и Password) заполнены.
+// Если какое-то из полей не заполнено - вывести ошибку.
+// Если оба заполнены - вывести через alert сообщение
+// "Добро пожаловать, username!", где username - значение из соответствующего поля.
+
+
+    // function areInputsFill () {
+    //
+    // }
+    //
+    // inputsArray.forEach((input) => {
+    //     if (input.value.trim() === '') {
+    //         let label = input.getAttribute('data-label');
+    //         emptyFields.push(label);
+    //     }
+    // });
 
 }
 
