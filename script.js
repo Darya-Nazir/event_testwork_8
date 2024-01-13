@@ -23,6 +23,7 @@ window.onload = function () {
     const mainTitle = document.getElementsByClassName('desc__form-title')[0];
     const unneededElements = document.querySelectorAll('.unneeded-to-login');
     const descButton = document.getElementById('desc__btn');
+    const needElements = document.querySelectorAll('.need-to-login');
 
 
     function isNameValid() {
@@ -157,7 +158,6 @@ window.onload = function () {
     }
 
 
-
     function goToLoginView() {
         mainTitle.innerText = 'Log in to the system';
         descButton.innerText = 'Sign In';
@@ -167,6 +167,17 @@ window.onload = function () {
         });
     }
 
+
+    function areInputsFill () {
+        needElements.forEach((input) => {
+            if (input.value.trim() === '') {
+                console.log('Необходимо заполнить все поля');
+                return false;
+            } else {
+                console.log(`Добро пожаловать, ${fullName.value}!`);
+            }
+        });
+    }
 
 
     fullName.onblur = isNameValid;
@@ -183,19 +194,11 @@ window.onload = function () {
 
     link.onclick = goToLoginView;
 
+    descButton.onclick = areInputsFill;
 
 
-// • Заменить слушатель события для кнопки «Sign In»:
-// нужно проверить только то, что оба поля (Username и Password) заполнены.
-// Если какое-то из полей не заполнено - вывести ошибку.
-// Если оба заполнены - вывести через alert сообщение
-// "Добро пожаловать, username!", где username - значение из соответствующего поля.
 
 
-    // function areInputsFill () {
-    //
-    // }
-    //
     // inputsArray.forEach((input) => {
     //     if (input.value.trim() === '') {
     //         let label = input.getAttribute('data-label');
