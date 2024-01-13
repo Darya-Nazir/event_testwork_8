@@ -19,8 +19,8 @@ window.onload = function () {
     const theSamePasswordInput = document.querySelector('[data-label="Repeat Password"]');
     const blackBack = document.getElementById('main__black-back');
     const popupButton = document.getElementsByClassName('popup__btn')[0];
-
-
+    const link = document.getElementById('link');
+    const mainTitle = document.getElementsByClassName('desc__form-title')[0];
 
 
     function isNameValid() {
@@ -136,7 +136,6 @@ window.onload = function () {
     }
 
 
-
     function handler() {
         clearArray();
         checkFields();
@@ -151,14 +150,35 @@ window.onload = function () {
 
     document.querySelector('.btn').onclick = handler;
 
-const link = document.getElementById('link');
-function closePopup () {
-    blackBack.classList.remove('open');
-    location.reload();
-    link.click();
-}
+    function closePopup() {
+        blackBack.classList.remove('open');
+        location.reload();
+        link.click();
+    }
 
-popupButton.onclick = closePopup;
+    popupButton.onclick = closePopup;
+
+
+
+// • Заменить слушатель события для кнопки «Sign In»:
+// нужно проверить только то, что оба поля (Username и Password) заполнены.
+// Если какое-то из полей не заполнено - вывести ошибку.
+// Если оба заполнены - вывести через alert сообщение
+// "Добро пожаловать, username!", где username - значение из соответствующего поля.
+
+    const unneededElements = document.querySelectorAll('.unneeded-to-login');
+    const descButton = document.getElementById('desc__btn');
+
+    function goToLoginView() {
+        mainTitle.innerText = 'Log in to the system';
+        descButton.innerText = 'Sign In';
+
+        unneededElements.forEach(function (element) {
+            element.remove();
+        });
+    }
+
+    link.onclick = goToLoginView;
 
 
 }
