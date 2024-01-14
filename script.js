@@ -3,9 +3,11 @@
 window.onload = function () {
     // console.log('Весь JavaScript код загружен.');
 
+    // функции почему-то не подставляется имя пользователя в приветствие:
 
     let booleanArray = [];
     let emptyFields = [];
+    let needFieldsArray = [];
 
     const invalidSymbols = [
         ".",
@@ -153,22 +155,26 @@ window.onload = function () {
             element.remove();
         });
 
-        // descButton.addEventListener('click', areInputsFill);
-        descButton.onclick = areInputsFill;
+        descButton.onclick = smallHandler;
         passwordInput.onblur = null;
-
     }
 
 
-    function areInputsFill () {
-        needElements.forEach((input) => {
-            if (input.value.trim() === '') {
-                console.log('Необходимо заполнить все поля');
-                return false;
-            } else {
-                console.log(`Добро пожаловать, ${fullName.value}!`);
+    function areInputsFill() {
+        needElements.forEach((field) => {
+            if (field.value.trim() === '') {
+                needFieldsArray.push(field);
             }
         });
+    }
+
+
+    function finish() {
+        if (needFieldsArray.length > 0) {
+            console.log('Необходимо заполнить все поля');
+        } else {
+            console.log(`Добро пожаловать, ${username.value}!`);
+        }
     }
 
 
@@ -184,6 +190,11 @@ window.onload = function () {
         showPopup();
     }
 
+    function smallHandler() {
+        areInputsFill();
+        finish();
+    }
+
 
     fullName.onblur = isNameValid;
 
@@ -195,14 +206,9 @@ window.onload = function () {
 
     descButton.onclick = handler;
 
-    // descButton.addEventListener('click', handler);
-
     popupButton.onclick = closePopup;
 
     link.onclick = goToLoginView;
-
-
-
 
 
 // Разобраться с самым концом:
@@ -210,7 +216,6 @@ window.onload = function () {
 // Точно ли можно без addEventListener
 // Почему не отражается имя в приветствии, и как выводить в консоль единожды.
 // Например, одна функция проходится по полям, а другая потом выводит итоговое сообщение.
-
 
 
 }
