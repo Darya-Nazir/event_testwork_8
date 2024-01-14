@@ -1,9 +1,7 @@
 "use strict";
 
 window.onload = function () {
-    // console.log('Весь JavaScript код загружен.');
 
-    // функции почему-то не подставляется имя пользователя в приветствие:
 
     let booleanArray = [];
     let emptyFields = [];
@@ -39,7 +37,7 @@ window.onload = function () {
     }
 
 
-    // Эта функция не имеет булева значения, которое попадает в массив,
+    // Эта функция не имеет булева значения, которое должно попасть в массив,
     // потому что она просто не дает возможности ввести не тот символ.
     function checkString(evt) {
         if (invalidSymbols.includes(evt.key)) {
@@ -48,13 +46,13 @@ window.onload = function () {
     }
 
 
-    checkbox.onchange = (evt) => {
+    function isAgree(evt) {
         if (checkbox.checked) {
             console.log("Согласен");
         } else {
             console.log("Не согласен");
         }
-    };
+    }
 
 
     function checkFields() {
@@ -190,15 +188,19 @@ window.onload = function () {
         showPopup();
     }
 
+
     function smallHandler() {
         areInputsFill();
         finish();
     }
 
 
+    // Почему одни и те же свойства события отражаются разным цветом?
     fullName.onblur = isNameValid;
 
     username.onkeydown = checkString;
+
+    checkbox.onchange = isAgree;
 
     passwordInput.onblur = isValidPasswordLength;
 
@@ -209,14 +211,6 @@ window.onload = function () {
     popupButton.onclick = closePopup;
 
     link.onclick = goToLoginView;
-
-
-// Разобраться с самым концом:
-
-// Точно ли можно без addEventListener
-// Почему не отражается имя в приветствии, и как выводить в консоль единожды.
-// Например, одна функция проходится по полям, а другая потом выводит итоговое сообщение.
-
 
 }
 
