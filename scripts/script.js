@@ -1,16 +1,11 @@
 "use strict";
-
 window.onload = function () {
-
 
     let booleanArray = [];
     let emptyFields = [];
     let needFieldsArray = [];
 
-    const invalidSymbols = [
-        ".",
-        ","
-    ]
+    const invalidSymbols = [".", ","]
 
     const fullName = document.getElementById('full-name');
     const username = document.getElementById('your-username');

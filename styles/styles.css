@@ -6,7 +6,7 @@
 
 @font-face {
     font-family: "Nunito";
-    src: url(fonts/NunitoSans_10pt-Medium.ttf);
+    src: url('../fonts/NunitoSans_10pt-Medium.ttf');
 }
 
 html {
@@ -15,7 +15,7 @@ html {
 
 body {
     font-family: "Nunito", sans-serif;
-   /*Шрифт здесь, а не в звездочке, чтобы не ломать наследование */
+    /*Шрифт здесь, а не в звездочке, чтобы не ломать наследование */
 }
 
 main {
@@ -36,7 +36,6 @@ main::before {
     width: 1200px;
     margin: 0 auto;
     display: flex;
-
 }
 
 .desc {
@@ -107,8 +106,8 @@ main::before {
 }
 
 .form__input::placeholder {
-color: #323232;
-font-size: 20px;
+    color: #323232;
+    font-size: 20px;
 }
 
 .desc__container {
@@ -158,7 +157,6 @@ font-size: 20px;
 
 .main__black-back {
     position: fixed;
-    /*position: absolute;*/
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.80);
@@ -177,7 +175,6 @@ font-size: 20px;
     visibility: visible;
     transition-delay: 0.1s;
     z-index: 30;
-
 }
 
 .main__popup {
@@ -201,9 +198,8 @@ font-size: 20px;
     justify-content: space-evenly;
     margin-right: 30px;
     width: 500px;
-
-
 }
+
 .popup__text {
     text-align: center;
     margin-bottom: 20px;
