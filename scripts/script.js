@@ -61,10 +61,10 @@ window.onload = function () {
 
     function isValidFields() {
         if (emptyFields.length > 0) {
-            console.log(`Необходимо заполнить ${emptyFields.join(', ')}`);
+            alert(`Необходимо заполнить ${emptyFields.join(', ')}`);
             booleanArray.push(false);
         } else {
-            console.log('Все поля заполнены');
+            // console.log('Все поля заполнены');
             booleanArray.push(true);
         }
     }
@@ -75,7 +75,7 @@ window.onload = function () {
         booleanArray.push(isChecked);
 
         if (!isChecked) {
-            console.log('Подтвердите свое согласие');
+            alert('Подтвердите свое согласие');
         }
 
         return isChecked;
@@ -86,7 +86,7 @@ window.onload = function () {
         let passwordValue = passwordInput.value.trim();
 
         if (passwordValue.length < 8) {
-            console.log('Пароль должен содержать не менее 8 символов');
+            alert('Пароль должен содержать не менее 8 символов');
             booleanArray.push(false);
         } else {
             booleanArray.push(true);
@@ -96,18 +96,18 @@ window.onload = function () {
 
     function isPasswordsTheSame() {
         if (passwordInput.value !== theSamePasswordInput.value) {
-            console.log('Пароли не совпадают!')
+            alert('Пароли не совпадают!')
             booleanArray.push(false);
         } else {
-            console.log('Пароли совпадают')
+            // console.log('Пароли совпадают')
             booleanArray.push(true);
         }
     }
 
 
-    function showBooleanArray() {
-        console.log(booleanArray);
-    }
+    // function showBooleanArray() {
+    //     console.log(booleanArray);
+    // }
 
 
     function clearArray() {
@@ -119,7 +119,7 @@ window.onload = function () {
 
     function showPopup() {
         if (booleanArray.includes(false)) {
-            console.log('Неправильно заполнена форма');
+            // console.log('Неправильно заполнена форма');
             return false;
         }
         blackBack.classList.add('open');
@@ -160,9 +160,9 @@ window.onload = function () {
 
     function finish() {
         if (needFieldsArray.length > 0) {
-            console.log('Необходимо заполнить все поля');
+            alert('Необходимо заполнить все поля');
         } else {
-            console.log(`Добро пожаловать, ${username.value}!`);
+            alert(`Добро пожаловать, ${username.value}!`);
         }
     }
 
@@ -175,7 +175,7 @@ window.onload = function () {
         isValidCheckbox();
         isValidPasswordLength();
 
-        showBooleanArray();
+        // showBooleanArray();
         showPopup();
     }
 
