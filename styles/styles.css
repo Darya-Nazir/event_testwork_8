@@ -78,6 +78,7 @@ main::before {
 .form__input {
     color: #323232;
     font-size: 20px;
+    font-family: "Nunito", sans-serif;
     border: none; /* Убираем стандартную рамку */
     outline: none; /* Убираем контур фокуса */
     height: 35px;

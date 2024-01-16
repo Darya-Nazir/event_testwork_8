@@ -21,19 +21,15 @@ window.onload = function () {
     const needElements = document.querySelectorAll('.need-to-login');
 
 
-    function isNameValid() {
-        const name = fullName.value;
-        const hasDigits = /\d/.test(name);
-        const isValid = !hasDigits;
+    function checkFullName(evt) {
+        const isDigit = /\d/.test(evt.key);
 
-        console.log(isValid ? name : 'Ввод цифр запрещен');
-
-        booleanArray.push(isValid);
+        if (isDigit) {
+            evt.preventDefault();
+        }
     }
 
 
-    // Эта функция не имеет булева значения, которое должно попасть в массив,
-    // потому что она просто не дает возможности ввести не тот символ.
     function checkString(evt) {
         if (invalidSymbols.includes(evt.key)) {
             evt.preventDefault();
@@ -190,8 +186,7 @@ window.onload = function () {
     }
 
 
-    // Почему одни и те же свойства события отражаются разным цветом?
-    fullName.onblur = isNameValid;
+    fullName.onkeydown = checkFullName;
 
     username.onkeydown = checkString;
 
