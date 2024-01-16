@@ -61,32 +61,29 @@ window.onload = function () {
 
     function isValidFields() {
         if (emptyFields.length > 0) {
-            alert(`Необходимо заполнить ${emptyFields.join(', ')}`);
             booleanArray.push(false);
         } else {
-            // console.log('Все поля заполнены');
             booleanArray.push(true);
         }
     }
 
 
-    function isValidCheckbox() {
-        const isChecked = checkbox.checked;
-        booleanArray.push(isChecked);
-
-        if (!isChecked) {
-            alert('Подтвердите свое согласие');
-        }
-
-        return isChecked;
-    }
+    // function isValidCheckbox() {
+    //     const isChecked = checkbox.checked;
+    //     booleanArray.push(isChecked);
+    //
+    //     if (!isChecked) {
+    //         // alert('Подтвердите свое согласие');
+    //     }
+    //
+    //     return isChecked;
+    // }
 
 
     function isValidPasswordLength() {
         let passwordValue = passwordInput.value.trim();
 
         if (passwordValue.length < 8) {
-            alert('Пароль должен содержать не менее 8 символов');
             booleanArray.push(false);
         } else {
             booleanArray.push(true);
@@ -96,7 +93,6 @@ window.onload = function () {
 
     function isPasswordsTheSame() {
         if (passwordInput.value !== theSamePasswordInput.value) {
-            alert('Пароли не совпадают!')
             booleanArray.push(false);
         } else {
             // console.log('Пароли совпадают')
@@ -118,12 +114,39 @@ window.onload = function () {
 
 
     function showPopup() {
+        let errorMessages = [];
+
         if (booleanArray.includes(false)) {
-            // console.log('Неправильно заполнена форма');
+            if (emptyFields.length > 0) {
+                errorMessages.push(`Необходимо заполнить ${emptyFields.join(', ')}.`);
+            }
+
+            if (!checkbox.checked) {
+                errorMessages.push('Подтвердите свое согласие.');
+            }
+
+            if (passwordInput.value.trim().length < 8) {
+                errorMessages.push('Пароль должен содержать не менее 8 символов.');
+            }
+
+            if (passwordInput.value !== theSamePasswordInput.value) {
+                errorMessages.push('Пароли не совпадают!');
+            }
+
+            alert(errorMessages.join('\n\n'));
             return false;
         }
+
         blackBack.classList.add('open');
     }
+
+    // function showPopup() {
+    //     if (booleanArray.includes(false)) {
+    //         // console.log('Неправильно заполнена форма');
+    //         return false;
+    //     }
+    //     blackBack.classList.add('open');
+    // }
 
 
     function closePopup() {
@@ -144,7 +167,7 @@ window.onload = function () {
             element.remove();
         });
 
-        descButton.onclick = smallHandler;
+        descButton.onclick = handlerforLogin;
         passwordInput.onblur = null;
     }
 
@@ -172,7 +195,7 @@ window.onload = function () {
         checkFields();
 
         isValidFields();
-        isValidCheckbox();
+        // isValidCheckbox();
         isValidPasswordLength();
 
         // showBooleanArray();
@@ -180,7 +203,7 @@ window.onload = function () {
     }
 
 
-    function smallHandler() {
+    function handlerforLogin() {
         areInputsFill();
         finish();
     }
