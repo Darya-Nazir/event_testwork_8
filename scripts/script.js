@@ -48,10 +48,7 @@ window.onload = function () {
     function checkFields(booleanArray) {
         emptyFields = [];
 
-        const inputs = document.getElementsByClassName('form__input');
-        const inputsArray = Array.from(inputs);
-
-        inputsArray.forEach((input) => {
+        Array.from(document.getElementsByClassName('form__input')).forEach((input) => {
             if (input.value.trim() === '') {
                 const label = input.getAttribute('data-label');
                 emptyFields.push(label);
@@ -94,25 +91,15 @@ window.onload = function () {
     }
 
 
-    function isPasswordsTheSame() {
-        if (passwordInput.value !== theSamePasswordInput.value) {
-            booleanArray.push(false);
-        } else {
-            // console.log('Пароли совпадают')
-            booleanArray.push(true);
-        }
-    }
+    // This function also is needed for the assignment, but not needed for the final application.
 
-
-    // I put on this function here in case of debugging.
-
-    // function showBooleanArray(booleanArray) {
-    //     console.log(booleanArray);
-    // }
-
-
-    // function clearArray(booleanArray) {
-    //     booleanArray.splice(0, booleanArray.length);
+    // function isPasswordsTheSame() {
+    //     if (passwordInput.value !== theSamePasswordInput.value) {
+    //         booleanArray.push(false);
+    //     } else {
+    //         // console.log('Пароли совпадают')
+    //         booleanArray.push(true);
+    //     }
     // }
 
 
@@ -144,9 +131,9 @@ window.onload = function () {
     }
 
 
-function changeLink () {
-    location.reload();
-}
+    function changeLink() {
+        location.reload();
+    }
 
 
     function closePopup() {
@@ -195,19 +182,19 @@ function changeLink () {
     function signUp() {
         let booleanArray = [];
 
-        // clearArray(booleanArray);
         checkFields(booleanArray);
 
         areFieldsNotEmpty(booleanArray);
         isValidPasswordLength(booleanArray);
         // isValidCheckbox(booleanArray);
 
-        // showBooleanArray(booleanArray);
+        // console.log(booleanArray);
+
         showPopup(booleanArray);
     }
 
 
-    function goLoginForm(){
+    function goLoginForm() {
         areInputsFill();
         finish();
     }
@@ -231,7 +218,7 @@ function changeLink () {
 
     passwordInput.onblur = isValidPasswordLength;
 
-    theSamePasswordInput.onblur = isPasswordsTheSame;
+    // theSamePasswordInput.onblur = isPasswordsTheSame;
 
     descButton.onclick = handler;
 
