@@ -140,6 +140,12 @@ window.onload = function () {
         blackBack.classList.add('open');
     }
 
+
+function changeLink () {
+    location.reload(true);
+}
+
+
     // function showPopup() {
     //     if (booleanArray.includes(false)) {
     //         // console.log('Неправильно заполнена форма');
@@ -162,12 +168,13 @@ window.onload = function () {
     function goToLoginView() {
         mainTitle.innerText = 'Log in to the system';
         descButton.innerText = 'Sign In';
+        link.innerText = 'Sign Up';
 
         unneededElements.forEach(function (element) {
             element.remove();
         });
 
-        descButton.onclick = handlerforLogin;
+        descButton.onclick = handlerForLogin;
         passwordInput.onblur = null;
     }
 
@@ -190,22 +197,35 @@ window.onload = function () {
     }
 
 
-    function handler() {
-        clearArray();
-        checkFields();
 
-        isValidFields();
-        // isValidCheckbox();
-        isValidPasswordLength();
 
-        // showBooleanArray();
-        showPopup();
+function signUp(){
+    clearArray();
+    checkFields();
+
+    isValidFields();
+    // isValidCheckbox();
+    isValidPasswordLength();
+
+    // showBooleanArray();
+    showPopup();
+}
+
+
+    function goLoginForm(){
+        areInputsFill();
+        finish();
+        link.onclick = changeLink;
     }
 
 
-    function handlerforLogin() {
-        areInputsFill();
-        finish();
+    function handler() {
+        signUp();
+    }
+
+
+    function handlerForLogin() {
+        goLoginForm();
     }
 
 
