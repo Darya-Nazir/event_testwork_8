@@ -142,17 +142,8 @@ window.onload = function () {
 
 
 function changeLink () {
-    location.reload(true);
+    location.reload();
 }
-
-
-    // function showPopup() {
-    //     if (booleanArray.includes(false)) {
-    //         // console.log('Неправильно заполнена форма');
-    //         return false;
-    //     }
-    //     blackBack.classList.add('open');
-    // }
 
 
     function closePopup() {
@@ -176,6 +167,7 @@ function changeLink () {
 
         descButton.onclick = handlerForLogin;
         passwordInput.onblur = null;
+        link.onclick = changeLink;
     }
 
 
@@ -197,8 +189,6 @@ function changeLink () {
     }
 
 
-
-
 function signUp(){
     clearArray();
     checkFields();
@@ -215,7 +205,6 @@ function signUp(){
     function goLoginForm(){
         areInputsFill();
         finish();
-        link.onclick = changeLink;
     }
 
 
