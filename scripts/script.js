@@ -15,9 +15,9 @@ window.onload = function () {
     const popupButton = document.getElementsByClassName('popup__btn')[0];
     const link = document.getElementById('link');
     const mainTitle = document.getElementsByClassName('desc__form-title')[0];
-    const unneededElements = document.querySelectorAll('.unneeded-to-login');
+    const unneededElements = document.querySelectorAll('.need-for-signup');
     const descButton = document.getElementById('desc__btn');
-    const needElements = document.querySelectorAll('.need-to-login');
+    const needElements = document.querySelectorAll('.need-for-login');
 
 
     function checkFullName(evt) {
@@ -48,19 +48,19 @@ window.onload = function () {
     function checkFields(booleanArray) {
         emptyFields = [];
 
-        let inputs = document.getElementsByClassName('form__input');
-        let inputsArray = Array.from(inputs);
+        const inputs = document.getElementsByClassName('form__input');
+        const inputsArray = Array.from(inputs);
 
         inputsArray.forEach((input) => {
             if (input.value.trim() === '') {
-                let label = input.getAttribute('data-label');
+                const label = input.getAttribute('data-label');
                 emptyFields.push(label);
             }
         });
     }
 
 
-    function isValidFields(booleanArray) {
+    function areFieldsNotEmpty(booleanArray) {
         if (emptyFields.length > 0) {
             booleanArray.push(false);
         } else {
@@ -68,6 +68,8 @@ window.onload = function () {
         }
     }
 
+
+    // This function is needed for the assignment, but not needed for the final application.
 
     // function isValidCheckbox(booleanArray) {
     //     const isChecked = checkbox.checked;
@@ -102,14 +104,16 @@ window.onload = function () {
     }
 
 
+    // I put on this function here in case of debugging.
+
     // function showBooleanArray(booleanArray) {
     //     console.log(booleanArray);
     // }
 
 
-    function clearArray(booleanArray) {
-        booleanArray.splice(0, booleanArray.length);
-    }
+    // function clearArray(booleanArray) {
+    //     booleanArray.splice(0, booleanArray.length);
+    // }
 
 
     function showPopup(booleanArray) {
@@ -191,17 +195,16 @@ function changeLink () {
     function signUp() {
         let booleanArray = [];
 
-        clearArray(booleanArray);
+        // clearArray(booleanArray);
         checkFields(booleanArray);
 
-        isValidFields(booleanArray);
+        areFieldsNotEmpty(booleanArray);
         isValidPasswordLength(booleanArray);
         // isValidCheckbox(booleanArray);
 
         // showBooleanArray(booleanArray);
         showPopup(booleanArray);
     }
-
 
 
     function goLoginForm(){
