@@ -1,7 +1,6 @@
 "use strict";
 window.onload = function () {
 
-    let booleanArray = [];
     let emptyFields = [];
     let needFieldsArray = [];
 
@@ -46,7 +45,9 @@ window.onload = function () {
     }
 
 
-    function checkFields() {
+    function checkFields(booleanArray) {
+        emptyFields = [];
+
         let inputs = document.getElementsByClassName('form__input');
         let inputsArray = Array.from(inputs);
 
@@ -59,7 +60,7 @@ window.onload = function () {
     }
 
 
-    function isValidFields() {
+    function isValidFields(booleanArray) {
         if (emptyFields.length > 0) {
             booleanArray.push(false);
         } else {
@@ -68,7 +69,7 @@ window.onload = function () {
     }
 
 
-    // function isValidCheckbox() {
+    // function isValidCheckbox(booleanArray) {
     //     const isChecked = checkbox.checked;
     //     booleanArray.push(isChecked);
     //
@@ -80,7 +81,7 @@ window.onload = function () {
     // }
 
 
-    function isValidPasswordLength() {
+    function isValidPasswordLength(booleanArray) {
         let passwordValue = passwordInput.value.trim();
 
         if (passwordValue.length < 8) {
@@ -101,19 +102,17 @@ window.onload = function () {
     }
 
 
-    // function showBooleanArray() {
+    // function showBooleanArray(booleanArray) {
     //     console.log(booleanArray);
     // }
 
 
-    function clearArray() {
-        if (booleanArray.length > 0) {
-            booleanArray = [];
-        }
+    function clearArray(booleanArray) {
+        booleanArray.splice(0, booleanArray.length);
     }
 
 
-    function showPopup() {
+    function showPopup(booleanArray) {
         let errorMessages = [];
 
         if (booleanArray.includes(false)) {
@@ -189,17 +188,20 @@ function changeLink () {
     }
 
 
-function signUp(){
-    clearArray();
-    checkFields();
+    function signUp() {
+        let booleanArray = [];
 
-    isValidFields();
-    // isValidCheckbox();
-    isValidPasswordLength();
+        clearArray(booleanArray);
+        checkFields(booleanArray);
 
-    // showBooleanArray();
-    showPopup();
-}
+        isValidFields(booleanArray);
+        isValidPasswordLength(booleanArray);
+        // isValidCheckbox(booleanArray);
+
+        // showBooleanArray(booleanArray);
+        showPopup(booleanArray);
+    }
+
 
 
     function goLoginForm(){
