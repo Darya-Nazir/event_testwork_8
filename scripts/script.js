@@ -103,10 +103,12 @@ window.onload = function () {
     // }
 
 
+    // Лучше конечно разбить на отдельные функции, но я тогда не понимаю,
+    // как создать одну общую строку на все ошибки.
     function showPopup(booleanArray) {
         let errorMessages = [];
 
-        if (booleanArray.includes(false)) {
+        if (!booleanArray.every(value => value)) {
             if (emptyFields.length > 0) {
                 errorMessages.push(`Необходимо заполнить ${emptyFields.join(', ')}.`);
             }
