@@ -58,11 +58,11 @@ window.onload = function () {
 
 
     function areFieldsNotEmpty(booleanArray) {
-        (emptyFields.length > 0) ? booleanArray.push(false) : booleanArray.push(true);
+        const lack = 0;
+        // (emptyFields.length > 0) ? booleanArray.push(false) : booleanArray.push(true);
+        booleanArray.push(emptyFields.length === lack);
     }
 
-
-    // This function is needed for the assignment, but not needed for the final application.
 
     function isValidCheckbox(booleanArray) {
         const isChecked = checkbox.checked;
@@ -78,7 +78,9 @@ window.onload = function () {
 
     function isValidPasswordLength(booleanArray) {
         let passwordValue = passwordInput.value.trim();
-        (passwordValue.length < 8) ? booleanArray.push(false) : booleanArray.push(true);
+        const minPasswordLength = 8;
+        // (passwordValue.length < minPasswordLength) ? booleanArray.push(false) : booleanArray.push(true);
+        booleanArray.push(passwordValue.length >= minPasswordLength);
     }
 
 
