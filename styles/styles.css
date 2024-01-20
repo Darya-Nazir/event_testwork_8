@@ -135,6 +135,7 @@ main::before {
     border-radius: 40px;
     margin: 0 auto;
     cursor: pointer;
+    font-family: "Nunito", sans-serif;
 }
 
 .asc {

@@ -58,36 +58,27 @@ window.onload = function () {
 
 
     function areFieldsNotEmpty(booleanArray) {
-        if (emptyFields.length > 0) {
-            booleanArray.push(false);
-        } else {
-            booleanArray.push(true);
-        }
+        (emptyFields.length > 0) ? booleanArray.push(false) : booleanArray.push(true);
     }
 
 
     // This function is needed for the assignment, but not needed for the final application.
 
-    // function isValidCheckbox(booleanArray) {
-    //     const isChecked = checkbox.checked;
-    //     booleanArray.push(isChecked);
-    //
-    //     if (!isChecked) {
-    //         // alert('Подтвердите свое согласие');
-    //     }
-    //
-    //     return isChecked;
-    // }
+    function isValidCheckbox(booleanArray) {
+        const isChecked = checkbox.checked;
+        booleanArray.push(isChecked);
+
+        if (!isChecked) {
+            // alert('Подтвердите свое согласие');
+        }
+
+        return isChecked;
+    }
 
 
     function isValidPasswordLength(booleanArray) {
         let passwordValue = passwordInput.value.trim();
-
-        if (passwordValue.length < 8) {
-            booleanArray.push(false);
-        } else {
-            booleanArray.push(true);
-        }
+        (passwordValue.length < 8) ? booleanArray.push(false) : booleanArray.push(true);
     }
 
 
@@ -157,7 +148,7 @@ window.onload = function () {
             element.remove();
         });
 
-        descButton.onclick = handlerForLogin;
+        descButton.onclick = loginHandler;
         passwordInput.onblur = null;
         link.onclick = changeLink;
     }
@@ -188,7 +179,7 @@ window.onload = function () {
 
         areFieldsNotEmpty(booleanArray);
         isValidPasswordLength(booleanArray);
-        // isValidCheckbox(booleanArray);
+        isValidCheckbox(booleanArray);
 
         // console.log(booleanArray);
 
@@ -196,7 +187,7 @@ window.onload = function () {
     }
 
 
-    function goLoginForm() {
+    function performLogin() {
         areInputsFill();
         finish();
     }
@@ -207,8 +198,8 @@ window.onload = function () {
     }
 
 
-    function handlerForLogin() {
-        goLoginForm();
+    function loginHandler() {
+        performLogin();
     }
 
 
