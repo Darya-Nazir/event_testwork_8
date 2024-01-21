@@ -1,7 +1,5 @@
 "use strict";
 window.onload = function () {
-
-    let emptyFields = [];
     let needFieldsArray = [];
 
     const invalidSymbols = [".", ","]
@@ -28,13 +26,11 @@ window.onload = function () {
         }
     }
 
-
     function checkString(evt) {
         if (invalidSymbols.includes(evt.key)) {
             evt.preventDefault();
         }
     }
-
 
     function isAgree(evt) {
         if (checkbox.checked) {
@@ -44,92 +40,82 @@ window.onload = function () {
         }
     }
 
-
-    function checkFields(booleanArray) {
-        emptyFields = [];
-
-        Array.from(document.getElementsByClassName('form__input')).forEach((input) => {
-            if (input.value.trim() === '') {
-                const label = input.getAttribute('data-label');
-                emptyFields.push(label);
-            }
-        });
-    }
-
-
-    function areFieldsNotEmpty(booleanArray) {
-        const lack = 0;
-        // (emptyFields.length > 0) ? booleanArray.push(false) : booleanArray.push(true);
-        booleanArray.push(emptyFields.length === lack);
-    }
-
-
-    function isValidCheckbox(booleanArray) {
-        const isChecked = checkbox.checked;
-        booleanArray.push(isChecked);
-
-        if (!isChecked) {
-            // alert('Подтвердите свое согласие');
-        }
-
-        return isChecked;
-    }
-
-
-    function isValidPasswordLength(booleanArray) {
-        let passwordValue = passwordInput.value.trim();
-        const minPasswordLength = 8;
-        // (passwordValue.length < minPasswordLength) ? booleanArray.push(false) : booleanArray.push(true);
-        booleanArray.push(passwordValue.length >= minPasswordLength);
-    }
-
-
-    // This function also is needed for the assignment, but not needed for the final application.
-
-    // function isPasswordsTheSame() {
-    //     if (passwordInput.value !== theSamePasswordInput.value) {
-    //         booleanArray.push(false);
-    //     } else {
-    //         // console.log('Пароли совпадают')
-    //         booleanArray.push(true);
-    //     }
+    // function getEmptyInputs(inputs) {
+    //     return inputs.map(input => {
+    //         if (input.value.trim() === '') {
+    //             return input
+    //         }
+    //     });
     // }
 
-
-    // Лучше конечно разбить на отдельные функции, но я тогда не понимаю,
-    // как создать одну общую строку на все ошибки.
-    function showPopup(booleanArray) {
-        let errorMessages = [];
-
-        if (!booleanArray.every(value => value)) {
-            if (emptyFields.length > 0) {
-                errorMessages.push(`Необходимо заполнить ${emptyFields.join(', ')}.`);
-            }
-
-            if (!checkbox.checked) {
-                errorMessages.push('Подтвердите свое согласие.');
-            }
-
-            if (passwordInput.value.trim().length < 8) {
-                errorMessages.push('Пароль должен содержать не менее 8 символов.');
-            }
-
-            if (passwordInput.value !== theSamePasswordInput.value) {
-                errorMessages.push('Пароли не совпадают!');
-            }
-
-            alert(errorMessages.join('\n\n'));
-            return false;
-        }
-
-        blackBack.classList.add('open');
+    function getEmptyInputs(inputs) {
+        const inputsArray = Array.from(inputs);
+        return inputsArray.filter(input => input.value.trim() === '');
     }
 
+    function getInputLabels(formInputs) {
+        const emptyInputLabels = [];
+
+        Array.from(formInputs).forEach((input) => {
+            const label = input.getAttribute('data-label');
+            emptyInputLabels.push(label);
+        });
+
+        return emptyInputLabels;
+    }
+
+    function isValidCheckbox(checkbox) {
+        return checkbox.checked;
+    }
+
+    function isValidPasswordLength(passwordInput) {
+        const passwordValue = passwordInput.value.trim();
+        const minPasswordLength = 8;
+        return passwordValue.length >= minPasswordLength;
+    }
+
+    function showPopup(blackBack) {
+        blackBack.classList.add('open');
+        return true;
+    }
+
+    function arePasswordsSame(password1, password2) {
+        return password1.value !== password2.value;
+    }
+
+    function signUp() {
+        const formInputs = document.getElementsByClassName('form__input');
+        const errorMessages = [];
+        const emptyInputs = getEmptyInputs(formInputs);
+
+        if (emptyInputs.length > 0) {
+            const emptyInputLabels = getInputLabels(emptyInputs);
+            errorMessages.push(`Необходимо заполнить ${emptyInputLabels.join(', ')}.`)
+        }
+
+        if (!isValidCheckbox(checkbox)) {
+            errorMessages.push('Подтвердите свое согласие.');
+        }
+
+        if (!isValidPasswordLength(passwordInput)) {
+            errorMessages.push('Пароль должен содержать не менее 8 символов.');
+        }
+
+        if (arePasswordsSame(passwordInput, theSamePasswordInput)) {
+            errorMessages.push('Пароли не совпадают!');
+        }
+
+        if (errorMessages.length > 0) {
+            alert(errorMessages.join('\n\n'));
+            return;
+        }
+
+        showPopup(blackBack);
+    }
 
     function changeLink() {
         location.reload();
     }
-
 
     function closePopup() {
         blackBack.classList.remove('open');
@@ -139,7 +125,6 @@ window.onload = function () {
 
         goToLoginView();
     }
-
 
     function goToLoginView() {
         mainTitle.innerText = 'Log in to the system';
@@ -155,7 +140,6 @@ window.onload = function () {
         link.onclick = changeLink;
     }
 
-
     function areInputsFill() {
         needElements.forEach((field) => {
             if (field.value.trim() === '') {
@@ -163,7 +147,6 @@ window.onload = function () {
             }
         });
     }
-
 
     function finish() {
         if (needFieldsArray.length > 0) {
@@ -173,32 +156,14 @@ window.onload = function () {
         }
     }
 
-
-    function signUp() {
-        let booleanArray = [];
-
-        checkFields(booleanArray);
-
-        areFieldsNotEmpty(booleanArray);
-        isValidPasswordLength(booleanArray);
-        isValidCheckbox(booleanArray);
-
-        // console.log(booleanArray);
-
-        showPopup(booleanArray);
-    }
-
-
     function performLogin() {
         areInputsFill();
         finish();
     }
 
-
     function handler() {
         signUp();
     }
-
 
     function loginHandler() {
         performLogin();
@@ -210,10 +175,6 @@ window.onload = function () {
     username.onkeydown = checkString;
 
     checkbox.onchange = isAgree;
-
-    passwordInput.onblur = isValidPasswordLength;
-
-    // theSamePasswordInput.onblur = isPasswordsTheSame;
 
     descButton.onclick = handler;
 
