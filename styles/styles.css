@@ -1,0 +1,211 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "Nunito";
+    src: url('../fonts/NunitoSans_10pt-Medium.ttf');
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Nunito", sans-serif;
+    /*Шрифт здесь, а не в звездочке, чтобы не ломать наследование */
+}
+
+main {
+    position: relative;
+}
+
+main::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background-color: #F8F8FA;
+}
+
+.container {
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+}
+
+.desc {
+    width: 50%;
+    padding: 194px 64px 0 64px;
+}
+
+.logo {
+    position: absolute;
+    top: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.desc__form-title {
+    font-size: 36px;
+}
+
+.desc__par {
+    margin: 14px 0 70px;
+    color: #636363;
+    font-size: 22px;
+    line-height: 27px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.form__label {
+    display: flex;
+    flex-direction: column;
+    color: #C6C6C4;
+    font-size: 16px;
+}
+
+.form__input {
+    color: #323232;
+    font-size: 20px;
+    font-family: "Nunito", sans-serif;
+    border: none; /* Убираем стандартную рамку */
+    outline: none; /* Убираем контур фокуса */
+    height: 35px;
+}
+
+.form__label {
+    position: relative;
+}
+
+.form__span::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px; /* Initial height */
+    background-color: #C6C6C4;
+    transition: height 0.2s ease-in-out; /* Transition for smooth effect */
+}
+
+.form__label:focus-within .form__span::after {
+    /* Change height & bg-color on input focus */
+    height: 2px;
+    background-color: #9a9a99;
+}
+
+.form__input::placeholder {
+    color: #323232;
+    font-size: 20px;
+}
+
+.desc__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 40px;
+    margin: 30px 0 190px;
+}
+
+.desc__image-cont {
+    position: relative;
+    z-index: 10;
+    margin: 254px 0 0 11px;
+}
+
+.btn {
+    width: 210px;
+    height: 70px;
+    background-color: #DD3142;
+    color: #fff;
+    font-size: 20px;
+    border: none; /* Убираем рамку */
+    border-radius: 40px;
+    margin: 0 auto;
+    cursor: pointer;
+    font-family: "Nunito", sans-serif;
+}
+
+.asc {
+    color: #636363;
+    font-size: 16px;
+    margin: 0 auto;
+}
+
+#link {
+    cursor: pointer;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-bottom-color 0.3s ease;
+}
+
+#link:hover {
+    border-bottom-color: #C6C6C4;
+}
+
+/*popup*/
+
+.main__black-back {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.80);
+    top: 0;
+    left: 0;
+    z-index: 4;
+
+    opacity: 0; /* Устанавливаем начальную прозрачность в 0 */
+    transition: opacity 0.3s ease, visibility 0s linear 0.3s; /* Добавляем транзишн на opacity и задаем задержку для visibility */
+    visibility: hidden;
+}
+
+.main__black-back.open {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0.1s;
+    z-index: 30;
+}
+
+.main__popup {
+    padding: 5px;
+    height: 500px;
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    background-color: #F8F8FA;
+    position: absolute;
+    top: 350px;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+}
+
+.popup__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-right: 30px;
+    width: 500px;
+}
+
+.popup__text {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 27px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
