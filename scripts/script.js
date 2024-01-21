@@ -1,6 +1,5 @@
 "use strict";
 window.onload = function () {
-    const invalidSymbols = [".", ","]
 
     const fullName = document.getElementById('full-name');
     const username = document.getElementById('your-username');
@@ -25,6 +24,8 @@ window.onload = function () {
     }
 
     function checkString(evt) {
+        const invalidSymbols = [".", ","]
+
         if (invalidSymbols.includes(evt.key)) {
             evt.preventDefault();
         }
@@ -37,14 +38,6 @@ window.onload = function () {
             console.log("Не согласен");
         }
     }
-
-    // function getEmptyInputs(inputs) {
-    //     return inputs.map(input => {
-    //         if (input.value.trim() === '') {
-    //             return input
-    //         }
-    //     });
-    // }
 
     function getEmptyInputs(inputs) {
         const inputsArray = Array.from(inputs);
