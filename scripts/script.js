@@ -1,7 +1,5 @@
 "use strict";
 window.onload = function () {
-    let needFieldsArray = [];
-
     const invalidSymbols = [".", ","]
 
     const fullName = document.getElementById('full-name');
@@ -140,25 +138,27 @@ window.onload = function () {
         link.onclick = changeLink;
     }
 
-    function areInputsFill() {
-        needElements.forEach((field) => {
+    function areInputsFill(fields, emptyFieldsArray) {
+        fields = needElements;
+
+        fields.forEach((field) => {
             if (field.value.trim() === '') {
-                needFieldsArray.push(field);
+                emptyFieldsArray.push(field);
             }
         });
+        return emptyFieldsArray;
     }
 
-    function finish() {
-        if (needFieldsArray.length > 0) {
-            alert('Необходимо заполнить все поля');
-        } else {
-            alert(`Добро пожаловать, ${username.value}!`);
-        }
+    function finish(emptyFieldsArray) {
+        alert((emptyFieldsArray.length > 0) ? 'Необходимо заполнить все поля' : `Добро пожаловать, ${username.value}!`);
     }
 
     function performLogin() {
-        areInputsFill();
-        finish();
+        const needFieldsArray = [];
+        const emptyFields = [];
+
+        areInputsFill(needFieldsArray, emptyFields);
+        finish(emptyFields);
     }
 
     function handler() {
