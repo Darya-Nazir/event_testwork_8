@@ -32,11 +32,7 @@ window.onload = function () {
     }
 
     function isAgree() {
-        if (checkbox.checked) {
-            console.log("Согласен");
-        } else {
-            console.log("Не согласен");
-        }
+        console.log(checkbox.checked ? "Согласен" : "Не согласен");
     }
 
     function getEmptyInputs(inputs) {
