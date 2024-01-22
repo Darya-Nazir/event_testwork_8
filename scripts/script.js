@@ -31,7 +31,7 @@ window.onload = function () {
         }
     }
 
-    function isAgree(evt) {
+    function isAgree() {
         if (checkbox.checked) {
             console.log("Согласен");
         } else {
@@ -146,7 +146,7 @@ window.onload = function () {
         alert((emptyFieldsArray.length > 0) ? 'Необходимо заполнить все поля' : `Добро пожаловать, ${username.value}!`);
     }
 
-    function performLogin() {
+    function login() {
         const needFieldsArray = [];
         const emptyFields = [];
 
@@ -159,7 +159,7 @@ window.onload = function () {
     }
 
     function loginHandler() {
-        performLogin();
+        login();
     }
 
 
